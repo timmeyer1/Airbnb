@@ -1,0 +1,68 @@
+version: '3.8'
+
+volumes:
+  maria:
+
+services:
+
+  # container PHP
+  airbnbphp:
+    container_name: phpairbnb
+    build:
+      context: ./php
+    ports:
+      - '9000:9000'
+    environment:
+      TZ: UTC
+    volumes:
+      - ./app:/var/www/symfo
+    depends_on:
+      - airbnbbase
+
+  #container nginx
+  airbnbngix:
+    container_name: nginxairbnb
+    image: nginx:stable-alpine
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      TZ: UTC
+    volumes:
+      - ./app:/var/www/symfo
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - airbnbphp
+      - airbnbbase
+      - airbnbnode
+
+  # container de bdd MARIADB
+  airbnbbase:
+    container_name: baseairbnb
+    image: mariadb:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      TZ: UTC
+      MYSQL_ROOT_PASSWORD: admin2024
+      MYSQL_DATABASE: airbnbdata
+      MYSQL_USER: airbnbuser
+      MYSQL_PASSWORD: airbnb2024
+    ports:
+      - '3307:3306'
+    volumes:
+      - maria:/var/lib/mysql
+
+  # container NODE
+  airbnbnode:
+    container_name: nodeairbnb
+    build:
+      context: ./node
+    volumes:
+      - ./app:/var/www/symfo
+    restart: always
+    environment:
+      TZ: UTC
+    depends_on:
+      - airbnbphp
+    tty: true
