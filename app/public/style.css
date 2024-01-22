@@ -1,0 +1,33 @@
+/* //ping: header */
+
+.header-line1 {
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    box-shadow: 0 1px 0px #a8a8a8;
+}
+
+.header-line2 {
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    box-shadow: 0 1px 0px #a8a8a8;
+}
+
+.logo {
+width: 6%;
+}
+
+
+ul{
+    display: flex;
+    justify-content: center;
+}
+li {
+    list-style: none;
+    padding-right: 10px;
+}
