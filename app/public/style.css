@@ -68,75 +68,38 @@ a:hover svg path {
 
   /* //ping: LOGIN FORM */
 
-  .center-container {
-    text-align: center;
-  }
-  
-  .login-container {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 300px;
-    margin: 0 auto;
-  }
-  
-  .login-form {
-    padding: 20px;
-  }
-  
-  .login-form h2 {
-    text-align: center;
-    color: #333333;
-  }
-  
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #555555;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 12px;
-    background-color: #3498db;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #2980b9;
-  }
-  
-  .links {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .links a {
-    text-decoration: none;
-    color: #555555;
-    transition: color 0.3s ease;
-  }
-  
-  .links a:hover {
-    color: #3498db;
-  }
+/* Ajoutez vos styles personnalisés ici */
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.additional-links {
+  margin-top: 20px;
+}
+
+.divider {
+  margin: 0 10px;
+}
