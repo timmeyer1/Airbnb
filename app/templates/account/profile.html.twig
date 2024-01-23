@@ -6,5 +6,8 @@
 {% include "_parts/_header.html.twig" %}
 
 <h1 class="d-flex justify-content-center">Votre profil</h1>
-<p class="d-flex justify-content-center">Rien n'a afficher pour le moment...</p>
+<div class="d-flex justify-content-center flex-column align-items-center">
+    <p>Vous êtes connectés en tant que:</p>
+    <p><b>{{ app.user.email }}</b></p>
+</div>
 {% endblock %}
