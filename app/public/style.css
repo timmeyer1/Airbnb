@@ -1,33 +1,142 @@
 /* //ping: header */
 
-.header-line1 {
-    background-color: rgb(241, 241, 241);
+  .navbar {
+    background-color: #f0f0f0;
+    
+  }
+
+  .navbar a {
+    float: left;
+    display: block;
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .navbar-text a {
+    padding: 14px 16px;
+  }
+  .navbar-text a:hover {
+    background-color: #ddd;
+    color: black;
+    border-radius: 20px
+  }
+
+  .logo {
+    width: 80%;
+  }
+
+  .navbar-logo {
+    float: left;
+    width: 10%;
+  }
+
+  .navbar-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  .user-button a {
+    color: rgb(15, 15, 15);
+    margin-right: 10px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+/* Modifier la couleur de remplissage du chemin dans le SVG */
+.user-button svg path {
+    fill: #ec6464;
+}
+
+/* Changer la couleur de remplissage du chemin lors du survol de l'élément <a> */
+a:hover svg path {
+    fill: #da3e3e;
+}
+
+.icons-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 40px;
-    box-shadow: 0 1px 0px #a8a8a8;
-}
-
-.header-line2 {
-    background-color: rgb(255, 255, 255);
-    align-items: center;
-    width: 100%;
-    height: 100px;
-    box-shadow: 0 1px 0px #a8a8a8;
-}
-
-.logo {
-width: 6%;
-}
-
-
-ul{
-    display: flex;
+  }
+  
+  .svg-line svg {
     justify-content: center;
-}
-li {
-    list-style: none;
-    padding-right: 10px;
-}
+    margin-left: 50px;
+  }
+
+  /* //ping: LOGIN FORM */
+
+  .center-container {
+    text-align: center;
+  }
+  
+  .login-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  .login-form {
+    padding: 20px;
+  }
+  
+  .login-form h2 {
+    text-align: center;
+    color: #333333;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555555;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  .links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .links a {
+    text-decoration: none;
+    color: #555555;
+    transition: color 0.3s ease;
+  }
+  
+  .links a:hover {
+    color: #3498db;
+  }
