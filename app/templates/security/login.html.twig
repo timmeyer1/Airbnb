@@ -1,4 +1,4 @@
-{# {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
 
@@ -27,7 +27,13 @@
     <button class="btn btn-lg btn-primary" type="submit">
         Se connecter
     </button>
-</form> #}
+</form>
+{% endblock %}
+
+
+
+
+
 
 {# {% extends 'base.html.twig' %}
 
@@ -68,7 +74,9 @@
 {% endblock %} #}
 
 
-{% extends "base.html.twig" %}
+
+
+{# {% extends "base.html.twig" %}
 {% block title %}Identification{% endblock %}
 
 {% block body %}
@@ -79,7 +87,7 @@
             {% if error %}
             <div class="alert alert-danger">{{ error.messageKey }}</div>
             {% endif %}
-            <form method="post" action="{{ path("login") }}">{# on post sur la méthode login #}
+            <form method="post" action="{{ path(" login") }}">
                 <div class="form-group">
                     <label for="email">Identifiant</label>
                     <input type="text" class="form-control" id="email" name="_username" value="{{ last_username }}">
@@ -89,9 +97,9 @@
                     <input type="password" class="form-control" id="password" name="_password">
                 </div>
                 <div class="d-flex justify-content-center mt-5">
-                    {# bouton de retour à l'accueil #}
+
                     <a class="btn btn-sm btn-outline-warning me-2" href="{{ path('accueil') }}">Retour</a>
-                    {# bouton de connexion #}
+
                     <button type="submit" class="btn btn-sm btn-outline-primary">
                         Connexion
                     </button>
@@ -103,4 +111,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock %} #}
