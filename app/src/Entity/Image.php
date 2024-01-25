@@ -14,7 +14,7 @@ class Image
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image_path = null;
+    private ?string $imagePath = null;
 
     #[ORM\ManyToOne(inversedBy: 'image')]
     private ?Ads $ads = null;
@@ -26,12 +26,12 @@ class Image
 
     public function getImagePath(): ?string
     {
-        return $this->image_path;
+        return $this->imagePath;
     }
 
-    public function setImagePath(string $image_path): static
+    public function setImagePath(string $imagePath): static
     {
-        $this->image_path = $image_path;
+        $this->imagePath = $imagePath;
 
         return $this;
     }

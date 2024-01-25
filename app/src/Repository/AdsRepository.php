@@ -21,11 +21,15 @@ class AdsRepository extends ServiceEntityRepository
         parent::__construct($registry, Ads::class);
     }
 
-    public function findAllAds()
+    public function findAllWithImages()
     {
-        $db = $this->findAllOptimize()->orderBy('b.id', "DESC");
-        return $db->getQuery()->getResult();
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.image', 'i')
+            ->addSelect('i')
+            ->getQuery()
+            ->getResult();
     }
+
 
 //    /**
 //     * @return Ads[] Returns an array of Ads objects

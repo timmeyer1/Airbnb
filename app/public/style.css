@@ -1,105 +1,132 @@
+.body-content {
+  padding-top: 200px;
+}
+
+
 /* //ping: header */
 
-  .navbar {
-    background-color: #f0f0f0;
-    
-  }
+header {
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+}
 
-  .navbar a {
-    float: left;
-    display: block;
-    color: #000000;
-    text-align: center;
-    text-decoration: none;
-  }
-
-  .navbar-text a {
-    padding: 14px 16px;
-  }
-  .navbar-text a:hover {
-    background-color: #ddd;
-    color: black;
-    border-radius: 20px
-  }
-
-  .logo {
-    width: 80%;
-  }
-
-  .navbar-logo {
-    float: left;
-    width: 10%;
-  }
-
-  .navbar-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-  }
-
-  .user-button a {
-    color: rgb(15, 15, 15);
-    margin-right: 10px;
-    text-align: center;
-    text-decoration: none;
-  }
+.navbar {
+  background-color: #f0f0f0;
   
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+}
+
+.navbar-text a {
+  padding: 14px 16px;
+}
+.navbar-text a:hover {
+  background-color: #ddd;
+  color: black;
+  border-radius: 20px
+}
+
+.logo {
+  width: 80%;
+}
+
+.navbar-logo {
+  float: left;
+  width: 10%;
+}
+
+.navbar-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.user-button a {
+  color: rgb(15, 15, 15);
+  margin-right: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
 /* Modifier la couleur de remplissage du chemin dans le SVG */
 .user-button svg path {
-    fill: #ec6464;
+  fill: #ec6464;
 }
 
 /* Changer la couleur de remplissage du chemin lors du survol de l'élément <a> */
 a:hover svg path {
-    fill: #da3e3e;
+  fill: #da3e3e;
 }
 
 .icons-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .svg-line svg {
-    justify-content: center;
-    margin-left: 50px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  /* //ping: LOGIN FORM */
+.svg-line svg {
+  justify-content: center;
+  margin-left: 50px;
+}
+
+.line-icon {
+  background-color: rgb(255, 255, 255, 0.9);
+  padding-bottom: 20px
+}
+.line-icon:hover {
+  background-color: rgb(255, 255, 255, 1);
+  padding-bottom: 20px;
+  transition: 0.3s;
+}
+
+/* //ping: LOGIN FORM */
 
 /* Ajoutez vos styles personnalisés ici */
 .login-form {
-  max-width: 400px;
-  margin: 0 auto;
+max-width: 400px;
+margin: 0 auto;
+text-align: center;
+margin-top: 50px;
 }
 
 .alert {
-  margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+background-color: #007bff;
+border-color: #007bff;
 }
 .btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-
-.container {
-  text-align: center;
-  margin-top: 50px;
+background-color: #0056b3;
+border-color: #0056b3;
 }
 
 .additional-links {
-  margin-top: 20px;
+margin-top: 20px;
 }
 
 .divider {
-  margin: 0 10px;
+margin: 0 10px;
+}
+
+/* //ping: homepage */
+
+.ads-card {
+padding-left: 50px;
+display: flex;
+flex-direction: row;
+
 }
