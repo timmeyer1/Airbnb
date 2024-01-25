@@ -36,9 +36,10 @@ class HomeController extends AbstractController
     #[Route('/detail/{id}', name: 'detail', methods: ['GET'])]
     public function detail(int $id)
     {
-        $ads = $this->em->getRepository(Ads::class)->find($id);
+        $ads = $this->em->getRepository(Ads::class)->findByIdWithInfos($id);
+        // dd($ads);
         return $this->render('home/detail.html.twig', [
-            'id' => $id
+            'ads' => $ads,
         ]);
     }
 }

@@ -21,7 +21,7 @@ class Type
     #[ORM\Column(length: 255)]
     private ?string $label = null;
 
-    #[ORM\OneToMany(mappedBy: 'type_id', targetEntity: Ads::class)]
+    #[ORM\OneToMany(mappedBy: 'typeId', targetEntity: Ads::class)]
     private Collection $ads;
 
     public function __construct()

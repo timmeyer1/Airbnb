@@ -24,35 +24,54 @@ class AdsRepository extends ServiceEntityRepository
     public function findAllWithImages()
     {
         return $this->createQueryBuilder('a')
+            ->leftJoin('a.typeId', 't')
+            ->addSelect('t')
+            ->leftJoin('a.user_id', 'u')
+            ->addSelect('u')
             ->leftJoin('a.image', 'i')
             ->addSelect('i')
             ->getQuery()
             ->getResult();
     }
 
+    public function findByIdWithInfos($id)
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.typeId', 't')
+            ->addSelect('t')
+            ->leftJoin('a.user_id', 'u')
+            ->addSelect('u')
+            ->leftJoin('a.image', 'i')
+            ->addSelect('i')
+            ->where('a.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
-//    /**
-//     * @return Ads[] Returns an array of Ads objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Ads
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Ads[] Returns an array of Ads objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('a.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Ads
+    //    {
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

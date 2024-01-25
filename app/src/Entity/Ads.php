@@ -46,7 +46,7 @@ class Ads
     private Collection $image;
 
     #[ORM\ManyToOne(inversedBy: 'ads')]
-    private ?Type $type_id = null;
+    private ?Type $typeId = null;
 
     #[ORM\Column(length: 255)]
     private ?string $address = null;
@@ -214,12 +214,12 @@ class Ads
 
     public function getTypeId(): ?Type
     {
-        return $this->type_id;
+        return $this->typeId;
     }
 
-    public function setTypeId(?Type $type_id): static
+    public function setTypeId(?Type $typeId): static
     {
-        $this->type_id = $type_id;
+        $this->typeId = $typeId;
 
         return $this;
     }
