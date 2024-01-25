@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AdsRepository::class)]
@@ -30,6 +32,27 @@ class Ads
 
     #[ORM\Column]
     private ?int $size = null;
+
+    #[ORM\ManyToOne]
+    private ?User $user_id = null;
+
+    #[ORM\ManyToOne(inversedBy: 'user_id')]
+    private ?Reservation $reservation√_id = null;
+
+    #[ORM\ManyToMany(targetEntity: Equipment::class, inversedBy: 'ads')]
+    private Collection $equipment_id;
+
+    #[ORM\OneToMany(mappedBy: 'ads', targetEntity: Image::class)]
+    private Collection $image;
+
+    #[ORM\ManyToOne(inversedBy: 'ads')]
+    private ?Type $type_id = null;
+
+    public function __construct()
+    {
+        $this->equipment_id = new ArrayCollection();
+        $this->image = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +127,96 @@ class Ads
     public function setSize(int $size): static
     {
         $this->size = $size;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(?User $user_id): static
+    {
+        $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    public function getReservation√Id(): ?Reservation
+    {
+        return $this->reservation√_id;
+    }
+
+    public function setReservation√Id(?Reservation $reservation√_id): static
+    {
+        $this->reservation√_id = $reservation√_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Equipment>
+     */
+    public function getEquipmentId(): Collection
+    {
+        return $this->equipment_id;
+    }
+
+    public function addEquipmentId(Equipment $equipmentId): static
+    {
+        if (!$this->equipment_id->contains($equipmentId)) {
+            $this->equipment_id->add($equipmentId);
+        }
+
+        return $this;
+    }
+
+    public function removeEquipmentId(Equipment $equipmentId): static
+    {
+        $this->equipment_id->removeElement($equipmentId);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getImage(): Collection
+    {
+        return $this->image;
+    }
+
+    public function addImage(Image $image): static
+    {
+        if (!$this->image->contains($image)) {
+            $this->image->add($image);
+            $image->setAds($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): static
+    {
+        if ($this->image->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getAds() === $this) {
+                $image->setAds(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getTypeId(): ?Type
+    {
+        return $this->type_id;
+    }
+
+    public function setTypeId(?Type $type_id): static
+    {
+        $this->type_id = $type_id;
 
         return $this;
     }
