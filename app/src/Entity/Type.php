@@ -15,6 +15,9 @@ class Type
     #[ORM\Column]
     private ?int $id = null;
 
+
+    // #[ORM\Column(type: Types::ARRAY)]
+    // private array $label = [];
     #[ORM\Column(length: 255)]
     private ?string $label = null;
 

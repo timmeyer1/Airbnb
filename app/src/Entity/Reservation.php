@@ -71,7 +71,7 @@ class Reservation
     {
         if (!$this->ads_id->contains($userId)) {
             $this->ads_id->add($userId);
-            $userId->setReservation�Id($this);
+            $userId->setReservationId($this);
         }
 
         return $this;
@@ -81,8 +81,8 @@ class Reservation
     {
         if ($this->ads_id->removeElement($userId)) {
             // set the owning side to null (unless already changed)
-            if ($userId->getReservation�Id() === $this) {
-                $userId->setReservation�Id(null);
+            if ($userId->getReservationId() === $this) {
+                $userId->setReservationId(null);
             }
         }
 

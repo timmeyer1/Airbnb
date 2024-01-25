@@ -37,7 +37,7 @@ class Ads
     private ?User $user_id = null;
 
     #[ORM\ManyToOne(inversedBy: 'user_id')]
-    private ?Reservation $reservationÃ_id = null;
+    private ?Reservation $reservation_id = null;
 
     #[ORM\ManyToMany(targetEntity: Equipment::class, inversedBy: 'ads')]
     private Collection $equipment_id;
@@ -47,6 +47,9 @@ class Ads
 
     #[ORM\ManyToOne(inversedBy: 'ads')]
     private ?Type $type_id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $address = null;
 
     public function __construct()
     {
@@ -143,14 +146,14 @@ class Ads
         return $this;
     }
 
-    public function getReservationÃId(): ?Reservation
+    public function getReservationId(): ?Reservation
     {
-        return $this->reservationÃ_id;
+        return $this->reservation_id;
     }
 
-    public function setReservationÃId(?Reservation $reservationÃ_id): static
+    public function setReservationId(?Reservation $reservation_id): static
     {
-        $this->reservationÃ_id = $reservationÃ_id;
+        $this->reservation_id = $reservation_id;
 
         return $this;
     }
@@ -217,6 +220,18 @@ class Ads
     public function setTypeId(?Type $type_id): static
     {
         $this->type_id = $type_id;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): static
+    {
+        $this->address = $address;
 
         return $this;
     }

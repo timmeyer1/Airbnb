@@ -8,6 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+
+    /**
+     * var AdsRepository
+     */
+    private $adsRepo;
+
     #[Route('/', name: 'accueil', methods: ['GET'])]
     public function index(): Response
     {
@@ -15,9 +21,11 @@ class HomeController extends AbstractController
     }
 
 
-    #[Route('/profile', name: 'profile', methods: ['GET'])]
+    #[Route('/profile', name: 'profile', methods: ['GE T'])]
     public function profile()
     {
-        return $this->render('account/profile.html.twig');
+        return $this->render('account/profile.html.twig', [
+            'ads' => $this->adsRepo->findAllAds()
+        ]);
     }
 }
