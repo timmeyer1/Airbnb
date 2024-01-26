@@ -19,9 +19,6 @@ class Image
     #[ORM\Column(length: 255)]
     private ?string $imagePath = null;
 
-    #[Vich\UploadableField(mapping: 'house', fileNameProperty: 'imagePath')]
-    private ?File $imageFile = null;
-
     #[ORM\ManyToOne(inversedBy: 'image')]
     private ?Ads $ads = null;
 
@@ -35,17 +32,6 @@ class Image
         return $this->imagePath;
     }
 
-    public function getImageFile(): ?string
-    {
-        return $this->imageFile;
-    }
-
-    public function setImageFile(string $imageFile): static
-    {
-        $this->imageFile = $imageFile;
-
-        return $this;
-    }
     public function setImagePath(string $imagePath): static
     {
         $this->imagePath = $imagePath;

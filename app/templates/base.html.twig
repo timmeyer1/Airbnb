@@ -17,9 +17,10 @@
 
 </head>
 
-{% block header %}{% endblock %}
 
 <body class="background">
+    
+    {% block header %}{% include "_parts/_header.html.twig" %}{% endblock %}
     {% block body %}{% endblock %}
 </body>
 {% block javascripts %}

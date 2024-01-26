@@ -4,7 +4,6 @@
 
 
 {% block body %}
-{% include "_parts/_header.html.twig" %}
 
 {% for item in ads %}
 <div id="card" class="container card" style="width: 18rem;">
@@ -28,15 +27,14 @@
 {% block title %}Airbnb | Locations de vacances, cabanes, maisons...{% endblock %}
 
 {% block body %}
-{% include "_parts/_header.html.twig" %}
 
 <section class="d-flex gap-5 flex-wrap justify-content-center">
 {% for item in ads %}
     <div class="card" style="width: 18rem;">
         <a class="text-decoration-none text-dark" href="{{ path('detail', {'id': item.id}) }}">
-            {% if item.image is not empty and item.image.first is not same as(false) %}
+            {% if item.imagePath %}
             {% set image = item.image.first %}
-            <img class="card-img-top" src="{{ image.imagePath }}" alt="Card image cap">
+            <img class="card-img-top" src="/images/upload/{{ item.imagePath }}" alt="Card image cap">
             {% else %}
             {# Handle the case where the image is not available #}
             <h4>🚫 Pas d'image</h4>

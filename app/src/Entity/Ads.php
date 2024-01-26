@@ -2,14 +2,22 @@
 
 namespace App\Entity;
 
-use App\Repository\AdsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AdsRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+
 
 #[ORM\Entity(repositoryClass: AdsRepository::class)]
 class Ads
 {
+
+    #[Vich\UploadableField(mapping: 'house', fileNameProperty: 'imagePath')]
+    private ?File $imageFile = null;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -50,6 +58,9 @@ class Ads
 
     #[ORM\Column(length: 255)]
     private ?string $address = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imagePath = null;
 
     public function __construct()
     {
@@ -232,6 +243,30 @@ class Ads
     public function setAddress(string $address): static
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath(string $imagePath): static
+    {
+        $this->imagePath = $imagePath;
+
+        return $this;
+    }
+    
+    public function getImageFile(): ?string
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(string $imageFile): static
+    {
+        $this->imageFile = $imageFile;
 
         return $this;
     }

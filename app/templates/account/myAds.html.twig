@@ -1,69 +1,25 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Ads{% endblock %}
+{% block title %}Mes annonces{% endblock %}
 
 {% block body %}
-{% include "_parts/_header.html.twig" %}
-<h1>Ads</h1>
-
-<table class="table">
-    <tbody>
-        {% for item in ads %}
-        <div class="card" style="width: 18rem;">
-            <a class="text-decoration-none text-dark" href="{{ path('detail', {'id': item.id}) }}">
-                {% if item.image is not empty and item.image.first is not same as(false) %}
-                {% set image = item.image.first %}
-                <img class="card-img-top" src="{{ image.imagePath }}" alt="Card image cap">
-                {% else %}
-                {# Handle the case where the image is not available #}
-                <h4>🚫 Pas d'image</h4>
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ item.city }}, {{ item.country }}</h5>
-                    <p class="card-text">{{ item.description }}</p>
-                    <p><b>{{ item.price }}€</b> par nuit</p>
-                </div>
-            </a>
-        </div>
-        {% endfor %}
-        <tr>
-            <th>Id</th>
-            <td>{{ ad.id }}</td>
-        </tr>
-        <tr>
-            <th>City</th>
-            <td>{{ ad.city }}</td>
-        </tr>
-        <tr>
-            <th>Country</th>
-            <td>{{ ad.country }}</td>
-        </tr>
-        <tr>
-            <th>Description</th>
-            <td>{{ ad.description }}</td>
-        </tr>
-        <tr>
-            <th>Price</th>
-            <td>{{ ad.price }}</td>
-        </tr>
-        <tr>
-            <th>Sleeping</th>
-            <td>{{ ad.sleeping }}</td>
-        </tr>
-        <tr>
-            <th>Size</th>
-            <td>{{ ad.size }}</td>
-        </tr>
-        <tr>
-            <th>Address</th>
-            <td>{{ ad.address }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<a href="{{ path('app_ads_index') }}">back to list</a>
-
-<a href="{{ path('editAd', {'id': ad.id}) }}">edit</a>
-
-{{ include('ads/_delete_form.html.twig') }}
+<section class="d-flex gap-5 flex-wrap justify-content-center">
+    {% for userId in userId %}
+    <div class="card" style="width: 18rem;">
+        <a class="text-decoration-none text-dark" href="{{ path('detail', {'id': userId.id}) }}">
+            {% if userId.imagePath %}
+            {% set image = userId.image.first %}
+            <img class="card-img-top" src="/images/upload/{{ userId.imagePath }}" alt="Card image cap">
+            {% else %}
+            <h4>🚫 Pas d'image</h4>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ userId.city }}, {{ userId.country }}</h5>
+                <p class="card-text">{{ userId.description }}</p>
+                <p><b>{{ userId.price }}€</b> par nuit</p>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</section>
 {% endblock %}

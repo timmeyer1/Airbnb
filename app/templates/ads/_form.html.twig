@@ -1,9 +1,4 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <ul class="tags">
-        {% for tag in form.image %}
-            <li>{{ form_row(tag.imageFile) }}</li>
-        {% endfor %}
-    </ul>
     <button class="btn btn-primary">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}

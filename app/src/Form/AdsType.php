@@ -87,11 +87,16 @@ class AdsType extends AbstractType
                 'attr' => ['class' => 'form-control']
             ])
             
-            ->add('image', CollectionType::class, [
-                'entry_type' => UploadImageType::class,
-                'label' => false,
-                // 'allow_add' => true,
-                // 'prototype' => true,
+            // ->add('image', CollectionType::class, [
+            //     'entry_type' => UploadImageType::class,
+            //     'label' => false,
+            //     'allow_add' => true,
+            //     'prototype' => true,
+            // ]);
+            ->add('imageFile', FileType::class, [
+                'label' => 'Image (JPG, PNG, jpeg, jpg)',
+                'mapped' => false,
+                'attr' => ['class' => 'form-control-file']
             ]);
     }
 

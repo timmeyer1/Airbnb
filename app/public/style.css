@@ -120,6 +120,11 @@ flex-direction: row;
 padding-left: 50px;
 }
 
+.image-size {
+  width: 720px;
+  height: 480px;
+}
+
 /* //ping: profile */
 
 .adfa {

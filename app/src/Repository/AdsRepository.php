@@ -49,6 +49,16 @@ class AdsRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    // fonction pour récupérer toutes les annonces créées par l'utilisateur
+    public function findAllByUserId($userId)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.user_id = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }
+
 
     //    /**
     //     * @return Ads[] Returns an array of Ads objects

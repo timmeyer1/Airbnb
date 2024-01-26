@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/ads')]
 class AdsController extends AbstractController
@@ -24,7 +25,7 @@ class AdsController extends AbstractController
     }
 
     #[Route('/add-ad/{id}', name: 'addAd', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, int $id, UserRepository $userRepository): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, int $id, UserRepository $userRepository)
     {
         $ad = new Ads();
         // récupérer l'id de l'utilisateur
@@ -33,12 +34,33 @@ class AdsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($ad);
-            $entityManager->flush();
+            //gestion de l'image uploadée
+            $imageFile = $form->get('imageFile')->getData();
+            if ($imageFile) {
+                //si une image est uploadée, on récupère son nom d'origine
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                //on genere un nouveau nom unique pour éviter d'ecraser des images de même nom
+                $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                try {
+                    //on déplace l'image uploadée dans le dossier public/images
+                    $imageFile->move(
+                        //games_images_directory est configuré dans config/services.yaml
+                        $this->getParameter('dossier_images'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    dd($e);
+                    $this->addFlash('danger', 'Une erreur est survenue lors de l\'upload de l\'image');
+                }
 
-            return $this->redirectToRoute('accueil', [], Response::HTTP_SEE_OTHER);
+                //on donne le nouveau nom pour la bdd
+                $ad->setImagePath($newFilename);
+                $entityManager->persist($ad);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('accueil', [], Response::HTTP_SEE_OTHER);
+            }
         }
-
         return $this->render('ads/new.html.twig', [
             'ad' => $ad,
             'form' => $form,
@@ -74,7 +96,7 @@ class AdsController extends AbstractController
     #[Route('/{id}', name: 'deleteAd', methods: ['POST'])]
     public function delete(Request $request, Ads $ad, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$ad->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $ad->getId(), $request->request->get('_token'))) {
             $entityManager->remove($ad);
             $entityManager->flush();
         }
