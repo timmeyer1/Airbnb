@@ -10,4 +10,12 @@
     <p>Vous êtes connectés en tant que:</p>
     <p><b>{{ app.user.email }}</b></p>
 </div>
+<div>
+    <a href="" class="container d-flex btn btn-primary justify-content-center">Modifier votre profil</a>
+    <a href="{{ path('myAds') }}" class="container d-flex btn btn-warning justify-content-center">Voir mes annonces</a>
+
+    <a href="{{ path('logout') }}" class="container d-flex btn btn-danger justify-content-center">Déconnexion</a>
+</div>
+
+
 {% endblock %}

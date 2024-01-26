@@ -26,13 +26,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-
-    #[Route('/profile', name: 'profile', methods: ['GET'])]
-    public function profile()
-    {
-        return $this->render('account/profile.html.twig');
-    }
-
     #[Route('/detail/{id}', name: 'detail', methods: ['GET'])]
     public function detail(int $id)
     {

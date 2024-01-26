@@ -66,6 +66,10 @@ a:hover svg path {
   margin-left: 50px;
 }
 
+.line-icon {
+  padding-bottom: 20px;
+}
+
 /* //ping: LOGIN FORM */
 
 /* Ajoutez vos styles personnalisés ici */
@@ -114,4 +118,13 @@ flex-direction: row;
 
 .title-details {
 padding-left: 50px;
+}
+
+/* //ping: profile */
+
+.adfa {
+  flex-direction: column;
+  gap: 5px;
+  background-color: rgb(0, 86, 179, 0.5);
+  border-radius: 50px;
 }

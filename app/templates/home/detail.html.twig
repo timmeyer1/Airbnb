@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{# {% extends "base.html.twig" %}
 
 {% block title %}{{ ads.city }} {{ ads.country }}{% endblock %}
 
@@ -12,6 +12,34 @@
     </div>
     <div>
         <h3>{{ ads.typeId.label}} - {{ ads.city }}, {{ ads.country }}</h3>
+        <p>À savoir: {{ ads.description }}</p>
+        <p>Nombre de couchages: {{ ads.sleeping }}</p>
+    </div>
+
+    <div>
+        <h5>{{ ads.price }}€ par nuit</h5>
+    </div>
+</section>
+{% endblock %} #}
+
+{% extends "base.html.twig" %}
+
+{% block title %}{{ ads.city }} {{ ads.country }}{% endblock %}
+
+{% block body %}
+{% include "_parts/_header.html.twig" %}
+
+<section class="container">
+    <h2 class="title-details">{{ ads.typeId.label}} - {{ ads.city }}</h2>
+    
+    {% if ads.image.first %}
+        <div>
+            <img src="{{ ads.image.first.imagePath }}" alt="">
+        </div>
+    {% endif %}
+
+    <div>
+        <h3>{{ ads.typeId.label }} - {{ ads.city }}, {{ ads.country }}</h3>
         <p>À savoir: {{ ads.description }}</p>
         <p>Nombre de couchages: {{ ads.sleeping }}</p>
     </div>

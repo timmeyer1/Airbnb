@@ -25,13 +25,13 @@
         <div class="navbar-text">
             <a href="{{path('accueil')}}">Logements</a>
             <a href="">Expériences</a>
-            <a href="">Expériences en ligne</a>
+            <a href="">Vos favoris</a>
         </div>
 
 
         <div class="user-button">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <a href="">
+            <a href="{{ path('addAd', {"id" : app.user.id}) }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
                     class="mt-1 bi bi-plus-circle-fill" viewBox="0 0 16 16">
                     <path
