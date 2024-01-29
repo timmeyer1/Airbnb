@@ -1,8 +1,8 @@
-/* //ping: header */
+/* //important: header */
 
 .navbar {
   background-color: #f0f0f0;
-  
+
 }
 
 .navbar a {
@@ -16,6 +16,7 @@
 .navbar-text a {
   padding: 14px 16px;
 }
+
 .navbar-text a:hover {
   background-color: #ddd;
   color: black;
@@ -74,55 +75,66 @@ a:hover svg path {
 
 /* Ajoutez vos styles personnalisés ici */
 .login-form {
-max-width: 400px;
-margin: 0 auto;
-text-align: center;
-margin-top: 50px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 50px;
 }
 
 .alert {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .form-group {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .btn-primary {
-background-color: #007bff;
-border-color: #007bff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
+
 .btn-primary:hover {
-background-color: #0056b3;
-border-color: #0056b3;
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
 
 .additional-links {
-margin-top: 50%;
+  margin-top: 30px;
 }
 
 .divider {
-margin: 0 10px;
+  margin: 0 10px;
 }
 
 /* //ping: homepage */
 
 .ads-card {
-padding-left: 50px;
-display: flex;
-flex-direction: row;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: row;
 
 }
 
 /* //ping: details */
 
 .title-details {
-padding-left: 50px;
+  padding-left: 50px;
 }
 
 .image-size {
   width: 720px;
   height: 480px;
+}
+
+.reservation {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: rgba(166, 166, 166, 0.5);
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 30px;
 }
 
 /* //ping: profile */
@@ -132,4 +144,83 @@ padding-left: 50px;
   gap: 5px;
   background-color: rgb(0, 86, 179, 0.5);
   border-radius: 50px;
+}
+
+/* //ping: myads (voir ses annonces */
+
+.btn-card {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+}
+
+/* //important: footer */
+
+footer {
+  margin-top: 50px;
+  background-color: #24262b;
+  padding: 70px 0;
+  top: 0;
+}
+
+.footer-col {
+  width: 25%;
+  padding: 0 15px;
+}
+
+.footer-col h4 {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+
+.footer-col h4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #e91e63;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff;
+  padding-left: 8px;
+}
+
+.footer-col .social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+  color: #24262b;
+  background-color: #ffffff;
 }

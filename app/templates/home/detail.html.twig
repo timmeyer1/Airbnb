@@ -32,14 +32,74 @@
     <div>
         <img class="image-size" src="/images/upload/{{ ads.imagePath }}" alt="Photo du bien">
     </div>
-    <div>
-        <h3>{{ ads.typeId.label }} - {{ ads.city }}, {{ ads.country }}</h3>
-        <p>À savoir: {{ ads.description }}</p>
-        <p>Nombre de couchages: {{ ads.sleeping }}</p>
+    <div class="d-flex justify-content-between">
+        <div>
+            <h3>{{ ads.typeId.label }} - {{ ads.city }}, {{ ads.country }}</h3>
+            <h5><b>À savoir:</b> {{ ads.description }}</h5>
+            <h5><b>Nombre de couchages:</b> {{ ads.sleeping }}</h5>
+            <h5><b>Équipements:</b></h5>
+            <ul>
+                {% for item in equipments %}
+                <li>
+                    {{ item.label }}
+                </li>
+                {% endfor %}
+            </ul>
+            <h5>{{ ads.price }}€ par nuit</h5>
+        </div>
+        <div class="reservation">
+            <form>
+                <label for="selectStartDay">Sélectionner un jour de départ :</label>
+                <select id="selectStartDay" name="selectStartDay">
+                    <option value="lundi">Lundi</option>
+                    <option value="mardi">Mardi</option>
+                    <option value="mercredi">Mercredi</option>
+                    <option value="jeudi">Jeudi</option>
+                    <option value="vendredi">Vendredi</option>
+                    <option value="samedi">Samedi</option>
+                    <option value="dimanche">Dimanche</option>
+                </select>
+
+                <label for="selectEndDay">Sélectionner un jour de retour :</label>
+                <select id="selectEndDay" name="selectEndDay">
+                    <option value="lundi">Lundi</option>
+                    <option value="mardi">Mardi</option>
+                    <option value="mercredi">Mercredi</option>
+                    <option value="jeudi">Jeudi</option>
+                    <option value="vendredi">Vendredi</option>
+                    <option value="samedi">Samedi</option>
+                    <option value="dimanche">Dimanche</option>
+                </select>
+
+                <br>
+
+                <label for="selectStartTime">Sélectionner une heure de départ:</label>
+                <select id="selectStartTime" name="selectStartTime">
+                    <option value="08:00">08:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="20:00">20:00</option>
+                </select>
+
+                <label for="selectStartTime">Sélectionner une heure de retour :</label>
+                <select id="selectEndTime" name="selectEndTime">
+                    <option value="08:00">08:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="20:00">20:00</option>
+                </select>
+
+                <br>
+
+                <label for="numGuests">Nombre d'invités :</label>
+                <input type="number" id="numGuests" name="numGuests" min="1">
+
+                <br>
+
+                <button type="submit" class="btn btn-success">Réserver maintenant</button>
+            </form>
+        </div>
     </div>
 
-    <div>
-        <h5>{{ ads.price }}€ par nuit</h5>
-    </div>
 </section>
 {% endblock %}

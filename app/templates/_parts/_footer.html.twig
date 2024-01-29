@@ -1,0 +1,50 @@
+
+
+{% block footer %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Assistance</h4>
+                <ul>
+                    <li><a href="">Centre d'aide</a></li>
+                    <li><a href="">Plan et fonctionnement du site</a></li>
+                    <li><a href="">Confidentialité</a></li>
+                    <li><a href="">Conditions générales</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Accueil de voyageurs</h4>
+                <ul>
+                    <li><a href="">Mettez votre logement sur Airbnb</a></li>
+                    <li><a href="">Vos favoris</a></li>
+                    <li><a href="">Devenez hôte</a></li>
+                    <li><a href="">Forum de la communauté</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Airbnb</h4>
+                <ul>
+                    <li><a href="">Newsroom</a></li>
+                    <li><a href="">Nouvelles fonctionnalités</a></li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><a href="{{ path('profile')}}">Votre compte</a></li>
+                    {% else %}
+                    <li><a href="{{ path('login')}}">Inscrivez-vous</a></li>
+                    {% endif %}
+                    <li><a href="">Sécurité</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Suivez-nous</h4>
+                <div class="social-links">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

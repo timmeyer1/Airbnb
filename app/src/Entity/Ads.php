@@ -270,4 +270,5 @@ class Ads
 
         return $this;
     }
+
 }

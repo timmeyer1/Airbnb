@@ -38,7 +38,7 @@ class AdsType extends AbstractType
                 'attr' => ['class' => 'form-control']
             ])
             ->add('price', MoneyType::class, [
-                'label' => 'Prix',
+                'label' => 'Prix pour la nuit',
                 'attr' => ['class' => 'form-control']
             ])
             ->add('sleeping', IntegerType::class, [
@@ -94,7 +94,7 @@ class AdsType extends AbstractType
             //     'prototype' => true,
             // ]);
             ->add('imageFile', FileType::class, [
-                'label' => 'Image (JPG, PNG, jpeg, jpg)',
+                'label' => 'Image d\'illustration (JPG, PNG, jpeg, jpg)',
                 'mapped' => false,
                 'attr' => ['class' => 'form-control-file']
             ]);

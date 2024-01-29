@@ -49,7 +49,6 @@ class AdsController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    dd($e);
                     $this->addFlash('danger', 'Une erreur est survenue lors de l\'upload de l\'image');
                 }
 
@@ -93,14 +92,15 @@ class AdsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'deleteAd', methods: ['POST'])]
+    #[Route('/{id}', name: 'deleteAd', methods: ['POST', 'GET'])]
     public function delete(Request $request, Ads $ad, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $ad->getId(), $request->request->get('_token'))) {
+            
             $entityManager->remove($ad);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('accueil', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('myAds', [], Response::HTTP_SEE_OTHER);
     }
 }

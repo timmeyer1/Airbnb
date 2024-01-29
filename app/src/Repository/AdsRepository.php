@@ -21,6 +21,16 @@ class AdsRepository extends ServiceEntityRepository
         parent::__construct($registry, Ads::class);
     }
 
+    public function findEquipmentsByAdId(int $adId)
+{
+    return $this->createQueryBuilder('a')
+        ->leftJoin('a.equipment', 'e')
+        ->andWhere('a.id = :adId')
+        ->setParameter('adId', $adId)
+        ->getQuery()
+        ->getOneOrNullResult();
+}
+
     public function findAllWithImages()
     {
         return $this->createQueryBuilder('a')

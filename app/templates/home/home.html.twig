@@ -29,7 +29,7 @@
 {% block body %}
 
 <section class="d-flex gap-5 flex-wrap justify-content-center">
-{% for item in ads %}
+    {% for item in ads %}
     <div class="card" style="width: 18rem;">
         <a class="text-decoration-none text-dark" href="{{ path('detail', {'id': item.id}) }}">
             {% if item.imagePath %}
@@ -48,4 +48,5 @@
     </div>
     {% endfor %}
 </section>
+
 {% endblock %}

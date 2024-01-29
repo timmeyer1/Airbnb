@@ -5,7 +5,7 @@
 {% block body %}
 <section class="d-flex gap-5 flex-wrap justify-content-center">
     {% for userId in userId %}
-    <div class="card" style="width: 18rem;">
+    <div class="card position-relative" style="width: 18rem;">
         <a class="text-decoration-none text-dark" href="{{ path('detail', {'id': userId.id}) }}">
             {% if userId.imagePath %}
             {% set image = userId.image.first %}
@@ -17,6 +17,11 @@
                 <h5 class="card-title">{{ userId.city }}, {{ userId.country }}</h5>
                 <p class="card-text">{{ userId.description }}</p>
                 <p><b>{{ userId.price }}€</b> par nuit</p>
+                <div class="btn-card d-flex gap-1">
+                    <a href="test" class="btn btn-secondary "><i class="fa-solid fa-pen-to-square"></i></a>
+                    {{ include('ads/_delete_form.html.twig') }}
+                    {# <a href="{{path('deleteAd', {'id': userId.id})}}" class="btn btn-danger "><i class="fa-solid fa-trash-can"></i></a> #}
+                </div>
             </div>
         </a>
     </div>

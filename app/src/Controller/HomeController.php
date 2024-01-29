@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Ads;
 use App\Entity\Image;
+use App\Entity\Equipment;
 use App\Repository\AdsRepository;
+use App\Repository\EquipmentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,12 +29,13 @@ class HomeController extends AbstractController
     }
 
     #[Route('/detail/{id}', name: 'detail', methods: ['GET'])]
-    public function detail(int $id)
+    public function detail(int $id, Ads $ads)
     {
         $ads = $this->em->getRepository(Ads::class)->findByIdWithInfos($id);
         // dd($ads);
         return $this->render('home/detail.html.twig', [
             'ads' => $ads,
+            'equipments' => $ads->getEquipmentId()
         ]);
     }
 }
