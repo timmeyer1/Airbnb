@@ -39,6 +39,15 @@
   flex-grow: 1;
 }
 
+.user-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+  margin-right: 5px;
+  gap: 10px;
+}
+
 .user-button a {
   color: rgb(15, 15, 15);
   margin-right: 10px;
@@ -70,6 +79,21 @@ a:hover svg path {
 .line-icon {
   padding-bottom: 20px;
 }
+
+.link-button {
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+  display: inline;
+}
+
+.link-button:hover svg path {
+  fill: #da3e3e;
+}
+
 
 /* //ping: LOGIN FORM */
 
@@ -113,7 +137,6 @@ a:hover svg path {
   padding-left: 50px;
   display: flex;
   flex-direction: row;
-
 }
 
 /* //ping: details */
@@ -135,6 +158,10 @@ a:hover svg path {
   border-radius: 5px;
   padding: 10px;
   margin-top: 30px;
+}
+
+.by {
+  text-transform: capitalize;
 }
 
 /* //ping: profile */

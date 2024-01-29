@@ -46,7 +46,7 @@ class AdsType extends AbstractType
                 'attr' => ['class' => 'form-control']
             ])
             ->add('size', IntegerType::class, [
-                'label' => 'Taille',
+                'label' => 'Taille en m²',
                 'attr' => ['class' => 'form-control']
             ])
             ->add('address', TextType::class, [
@@ -74,9 +74,11 @@ class AdsType extends AbstractType
                 'attr' => [
                     'class' => 'form-check',
                     'style' => 'display: flex;
-                    flex-direction: column;
+                    flex-direction: column-reverse;
                     background-color: rgb(0, 86, 179, 0.1);
-                    border-radius: 3px;',
+                    border-radius: 3px;
+                    align-items: baseline;
+                    ',
                 ]
             ])
             

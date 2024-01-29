@@ -3,11 +3,10 @@
 {% block title %}Edit Ads{% endblock %}
 
 {% block body %}
-    <h1>Edit Ads</h1>
 
-    {{ include('ads/_form.html.twig', {'button_label': 'Update'}) }}
+    <h1 class="container">Edit Ads</h1>
 
-    <a href="{{ path('app_ads_index') }}">back to list</a>
+    {{ include('ads/_form.html.twig', {'button_label': '✓ Mettre à jour'}) }}
 
-    {{ include('ads/_delete_form.html.twig') }}
+
 {% endblock %}

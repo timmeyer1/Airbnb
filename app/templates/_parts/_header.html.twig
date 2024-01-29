@@ -28,34 +28,63 @@
 
 
         <div class="user-button">
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <a href="{{ path('addAd', {"id" : app.user.id}) }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} {# Si l'utilisateur est connecté #}
+
+            {# si il a le rôle hote #}
+            {% if is_granted('ROLE_HOTE') %}
+
+            {# afficher le bouton "ajouter une annonce" #}
+            <form action="{{ path('addAd', {'id': app.user.id}) }}" method="get">
+                <button type="submit" class="btn link-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                     class="mt-1 bi bi-plus-circle-fill" viewBox="0 0 16 16">
                     <path
-                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
-                    <p>Ajouter une annonce</p>
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />        
                 </svg>
-            </a>
-            <a href="{{path("profile")}}">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_87_159)">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M20 3.33331C10.795 3.33331 3.33333 10.795 3.33333 20C3.33333 29.205 10.795 36.6666 20 36.6666C29.205 36.6666 36.6666 29.205 36.6666 20C36.6666 10.795 29.205 3.33331 20 3.33331ZM14.1667 15.8333C14.1667 15.0673 14.3175 14.3087 14.6107 13.601C14.9038 12.8933 15.3335 12.2502 15.8752 11.7085C16.4169 11.1668 17.0599 10.7372 17.7677 10.444C18.4754 10.1509 19.2339 9.99998 20 9.99998C20.766 9.99998 21.5246 10.1509 22.2323 10.444C22.94 10.7372 23.5831 11.1668 24.1248 11.7085C24.6664 12.2502 25.0961 12.8933 25.3893 13.601C25.6824 14.3087 25.8333 15.0673 25.8333 15.8333C25.8333 17.3804 25.2187 18.8641 24.1248 19.9581C23.0308 21.0521 21.5471 21.6666 20 21.6666C18.4529 21.6666 16.9692 21.0521 15.8752 19.9581C14.7812 18.8641 14.1667 17.3804 14.1667 15.8333ZM30.43 28.3066C29.1824 29.876 27.5963 31.1432 25.7903 32.0136C23.9842 32.8841 22.0048 33.3352 20 33.3333C17.9951 33.3352 16.0158 32.8841 14.2097 32.0136C12.4037 31.1432 10.8176 29.876 9.56999 28.3066C12.2717 26.3683 15.9583 25 20 25C24.0417 25 27.7283 26.3683 30.43 28.3066Z"
-                            fill="#F5F5F5" />
-                    </g>
-                </svg>
-            </a>
+                    <span>Nouvelle annonce</span>
+                </button>
+            </form>
+
+
+
+            {# sinon, si il est User, afficher le bouton "devenir hôte" #}
+            {% elseif is_granted('ROLE_USER') %}
+            <form action="{{ path('changeRole', {'id': app.user.id}) }}" method="get" onsubmit="return confirm('Une réauthentification est requise pour effectuer ce changement !');">
+                <button type="submit" class="btn link-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+                      </svg>
+                    <span>Devenir hôte</span>
+                </button>
+            </form>
+            
+
+            {% endif %} 
+
+            {# afficher le profil #}
+            <form action="{{ path('profile', {'id': app.user.id}) }}" method="get">
+                <button type="submit" class="btn link-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                      </svg>
+                    <span>Mon compte</span>
+                </button>
+            </form>
+
+            {# si il est pas connecté #}
             {% else %}
-            <a href="{{path('login')}}">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_87_159)">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M20 3.33331C10.795 3.33331 3.33333 10.795 3.33333 20C3.33333 29.205 10.795 36.6666 20 36.6666C29.205 36.6666 36.6666 29.205 36.6666 20C36.6666 10.795 29.205 3.33331 20 3.33331ZM14.1667 15.8333C14.1667 15.0673 14.3175 14.3087 14.6107 13.601C14.9038 12.8933 15.3335 12.2502 15.8752 11.7085C16.4169 11.1668 17.0599 10.7372 17.7677 10.444C18.4754 10.1509 19.2339 9.99998 20 9.99998C20.766 9.99998 21.5246 10.1509 22.2323 10.444C22.94 10.7372 23.5831 11.1668 24.1248 11.7085C24.6664 12.2502 25.0961 12.8933 25.3893 13.601C25.6824 14.3087 25.8333 15.0673 25.8333 15.8333C25.8333 17.3804 25.2187 18.8641 24.1248 19.9581C23.0308 21.0521 21.5471 21.6666 20 21.6666C18.4529 21.6666 16.9692 21.0521 15.8752 19.9581C14.7812 18.8641 14.1667 17.3804 14.1667 15.8333ZM30.43 28.3066C29.1824 29.876 27.5963 31.1432 25.7903 32.0136C23.9842 32.8841 22.0048 33.3352 20 33.3333C17.9951 33.3352 16.0158 32.8841 14.2097 32.0136C12.4037 31.1432 10.8176 29.876 9.56999 28.3066C12.2717 26.3683 15.9583 25 20 25C24.0417 25 27.7283 26.3683 30.43 28.3066Z"
-                            fill="#F5F5F5" />
-                    </g>
-                </svg>
-            </a>
+            {# afficher la page connexion #}
+            <form action="{{path('login')}}" method="get">
+                <button type="submit" class="btn link-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                      </svg>
+                    <span>Connexion</span>
+                </button>
+            </form>
+            
             {% endif %}
         </div>
     </div>

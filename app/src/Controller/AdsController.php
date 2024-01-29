@@ -16,13 +16,13 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 #[Route('/ads')]
 class AdsController extends AbstractController
 {
-    #[Route('/', name: 'app_ads_index', methods: ['GET'])]
-    public function index(AdsRepository $adsRepository): Response
-    {
-        return $this->render('ads/index.html.twig', [
-            'ads' => $adsRepository->findAll(),
-        ]);
-    }
+    // #[Route('/', name: 'app_ads_index', methods: ['GET'])]
+    // public function index(AdsRepository $adsRepository): Response
+    // {
+    //     return $this->render('ads/index.html.twig', [
+    //         'ads' => $adsRepository->findAll(),
+    //     ]);
+    // }
 
     #[Route('/add-ad/{id}', name: 'addAd', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, int $id, UserRepository $userRepository)
@@ -66,7 +66,7 @@ class AdsController extends AbstractController
         ]);
     }
 
-    // #[Route('/{id}', name: 'showAd', methods: ['GET'])]
+    // #[Route('/show/{id}', name: 'showAd', methods: ['GET'])]
     // public function show(Ads $ad): Response
     // {
     //     return $this->render('ads/show.html.twig', [

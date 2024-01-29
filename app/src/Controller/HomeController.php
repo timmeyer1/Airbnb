@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Ads;
+use App\Entity\User;
 use App\Entity\Image;
 use App\Entity\Equipment;
 use App\Repository\AdsRepository;
@@ -32,10 +33,12 @@ class HomeController extends AbstractController
     public function detail(int $id, Ads $ads)
     {
         $ads = $this->em->getRepository(Ads::class)->findByIdWithInfos($id);
+        $user = $this->em->getRepository(User::class)->find($ads->getUserId());
         // dd($ads);
         return $this->render('home/detail.html.twig', [
             'ads' => $ads,
-            'equipments' => $ads->getEquipmentId()
+            'equipments' => $ads->getEquipmentId(),
+            'user' => $ads->getUserId()
         ]);
     }
 }
