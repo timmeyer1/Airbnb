@@ -148,6 +148,8 @@ a:hover svg path {
 .image-size {
   width: 720px;
   height: 480px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+  border: 1px solid #ddd;
 }
 
 .reservation {
@@ -250,4 +252,11 @@ footer {
 .footer-col .social-links a:hover {
   color: #24262b;
   background-color: #ffffff;
+}
+
+
+/* //note: DÉTAILS*/
+.text_desc {
+  font-size: 80%;
+  font-weight: normal;
 }

@@ -1,0 +1,8 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <button class="btn btn-success">{{ button_label|default('Réserver') }}</button>
+    {% else %}
+    <a href="{{ path('login') }}" class="btn btn-success">Réserver maintenant</a>
+    {% endif %}
+{{ form_end(form) }}

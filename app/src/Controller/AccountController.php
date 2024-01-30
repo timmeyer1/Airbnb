@@ -59,4 +59,12 @@ class AccountController extends AbstractController
         // Rediriger vers une page appropriée
         return $this->redirectToRoute('accueil');
     }
+
+    #[Route('/ads/reservation', name: 'reservationList', methods: ['GET'])]
+    public function index(): Response
+    {
+        return $this->render('account/reservation.html.twig', [
+            'controller_name' => 'ReservationController',
+        ]);
+    }
 }

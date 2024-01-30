@@ -18,9 +18,9 @@ security:
             provider: app_user_provider
             logout:
                 path: logout
-            custom_authenticator: App\Security\LoginFormAuthenticator
+                target: /
                 # where to redirect after logout
-                target: login
+            custom_authenticator: App\Security\LoginFormAuthenticator
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
