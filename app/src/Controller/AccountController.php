@@ -67,4 +67,20 @@ class AccountController extends AbstractController
             'controller_name' => 'ReservationController',
         ]);
     }
+
+    #[Route('/favorites', name: 'myFavorites', methods: ['GET'])]
+    public function myFavorites(AdsRepository $adsRepository)
+    {
+        $user = $this->getUser(); // Récupérer l'utilisateur actuel
+    
+        if (!$user) {
+            return $this->redirectToRoute('accueil');
+        }
+    
+        $likes = $adsRepository->findAllLikesByUser($user);
+    
+        return $this->render('account/favorites.html.twig', [
+            'likes' => $likes,
+        ]);
+    }
 }

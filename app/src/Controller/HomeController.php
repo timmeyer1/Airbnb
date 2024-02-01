@@ -22,6 +22,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'accueil', methods: ['GET'])]
     public function index(AdsRepository $adsRepository): Response
     {
+
         $ads = $this->em->getRepository(Ads::class)->findAllWithImages();
         // dd($ads);
         return $this->render('home/home.html.twig', [

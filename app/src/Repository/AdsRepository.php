@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Ads;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Ads>
@@ -65,6 +66,33 @@ class AdsRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             ->andWhere('a.user_id = :userId')
             ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAdById(int $id): ?Ads
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.typeId', 't')
+            ->addSelect('t')
+            ->leftJoin('a.user_id', 'u')
+            ->addSelect('u')
+            ->leftJoin('a.image', 'i')
+            ->addSelect('i')
+            ->where('a.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    // récupérer toutes les annonces likes
+    public function findAllLikesByUser(User $user)
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.likes', 'l')
+            ->addSelect('l')
+            ->where(':user MEMBER OF a.likes')
+            ->setParameter('user', $user)
             ->getQuery()
             ->getResult();
     }

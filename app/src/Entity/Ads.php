@@ -7,6 +7,7 @@ use App\Repository\AdsRepository;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\JoinTable;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
@@ -62,10 +63,15 @@ class Ads
     #[ORM\Column(length: 255)]
     private ?string $imagePath = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class)]
+    #[JoinTable('user_ad_like')]
+    private Collection $likes;
+
     public function __construct()
     {
         $this->equipment_id = new ArrayCollection();
         $this->image = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -269,6 +275,32 @@ class Ads
         $this->imageFile = $imageFile;
 
         return $this;
+    }
+
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(User $like): self
+    {
+        if(!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+        }
+
+        return $this;
+    }
+
+    public function removeLike(User $like): self
+    {
+        $this->likes->removeElement($like);
+
+        return $this;
+    }
+
+    public function isLikedByUser(User $user): bool
+    {
+        return $this->likes->contains($user);
     }
 
 }

@@ -30,13 +30,15 @@
 
 <section class="d-flex gap-5 flex-wrap justify-content-center">
     {% for item in ads %}
-    <div class="card" style="width: 18rem;">
+    <div class="card position-relative" style="width: 18rem;">
         <a class="text-decoration-none text-dark" href="{{ path('detail', {'id': item.id}) }}">
             {% if item.imagePath %}
             {% set image = item.image.first %}
             <img class="card-img-top" src="/images/upload/{{ item.imagePath }}" alt="Card image cap">
+            <div class="like d-flex position-absolute top-0 start-0 p-3">
+                {% include "_parts/_like.html.twig" %}
+            </div>
             {% else %}
-            {# Handle the case where the image is not available #}
             <h4>🚫 Pas d'image</h4>
             {% endif %}
             <div class="card-body">
