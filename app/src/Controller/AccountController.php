@@ -32,6 +32,12 @@ class AccountController extends AbstractController
     #[Route('/myads', name: 'myAds', methods: ['GET'])]
     public function myAds(AdsRepository $adsRepository): Response
     {
+        $user = $this->getUser(); // Récupérer l'utilisateur actuel
+    
+        if (!$user) {
+            return $this->redirectToRoute('accueil');
+        }
+        
         return $this->render('account/myAds.html.twig', [
             'userId' => $adsRepository->findAllByUserId([$this->security->getUser()]),
         ]);

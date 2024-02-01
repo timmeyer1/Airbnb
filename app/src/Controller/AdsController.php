@@ -77,6 +77,11 @@ class AdsController extends AbstractController
     #[Route('/{id}/edit', name: 'editAd', methods: ['GET', 'POST'])]
     public function edit(Request $request, Ads $ad, EntityManagerInterface $entityManager): Response
     {
+        // on vérifie si l'utilisateur est propriétaire
+        if ($this->getUser() !== $ad->getUserId()) {
+            throw $this->createAccessDeniedException('Vous n\'avez pas le droit d\'éditer cette annonce.');
+        }
+
         $form = $this->createForm(AdsType::class, $ad);
         $form->handleRequest($request);
 
@@ -95,14 +100,17 @@ class AdsController extends AbstractController
     #[Route('/{id}', name: 'deleteAd', methods: ['POST', 'GET'])]
     public function delete(Request $request, Ads $ad, EntityManagerInterface $entityManager): Response
     {
+        // on vérifie si l'utilisateur est propriétaire
+        if ($this->getUser() !== $ad->getUserId()) {
+            throw $this->createAccessDeniedException('Vous n\'avez pas le droit d\'éditer cette annonce.');
+        }
+
         if ($this->isCsrfTokenValid('delete' . $ad->getId(), $request->request->get('_token'))) {
-            
+
             $entityManager->remove($ad);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('myAds', [], Response::HTTP_SEE_OTHER);
     }
-
-    
 }
