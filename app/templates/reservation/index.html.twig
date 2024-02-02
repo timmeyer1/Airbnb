@@ -13,8 +13,8 @@
         {% for reservation in reservations %}
             <tr>
                 <td>{{ reservation.id }}</td>
-                <td>{{ reservation.startDate ? reservation.startDate|date('Y-m-d') : '' }}</td>
-                <td>{{ reservation.endDate ? reservation.endDate|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.startDate ? reservation.startDate|date('d-m-Y') : '' }}</td>
+                <td>{{ reservation.endDate ? reservation.endDate|date('d-m-Y') : '' }}</td>
                 <td>
                     <a class="btn btn-secondary" href="{{ path('reservationEdit', {'id': reservation.id}) }}">Éditer</a>
                     <a class="btn btn-danger" href="{{ path('reservationDelete', {'id': reservation.id}) }}">Supprimer</a>
@@ -27,6 +27,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('reservationNew') }}">Create new</a>
 {% endblock %}

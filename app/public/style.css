@@ -139,6 +139,11 @@ a:hover svg path {
   flex-direction: row;
 }
 
+.image_card {
+  display: flex;
+  height: 200px;
+  width: auto;
+}
 
 
 /* //ping: details */
@@ -192,7 +197,7 @@ footer {
   margin-top: 50px;
   background-color: #24262b;
   padding: 70px 0;
-  top: 0;
+  bottom: 0;
 }
 
 .footer-col {

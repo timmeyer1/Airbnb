@@ -34,7 +34,9 @@
         <a class="text-decoration-none text-dark" href="{{ path('detail', {'id': item.id}) }}">
             {% if item.imagePath %}
             {% set image = item.image.first %}
-            <img class="card-img-top" src="/images/upload/{{ item.imagePath }}" alt="Card image cap">
+            <div class="image_card">
+                <img class=" card-img-top" src="/images/upload/{{ item.imagePath }}" alt="Card image cap">
+            </div>
             <div class="like d-flex position-absolute top-0 start-0 p-3">
                 {% include "_parts/_like.html.twig" %}
             </div>

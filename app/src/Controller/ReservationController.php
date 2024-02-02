@@ -35,7 +35,7 @@ class ReservationController extends AbstractController
             $entityManager->persist($reservation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('reservationIndex', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('reservationList', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('reservation/new.html.twig', [
@@ -61,7 +61,7 @@ class ReservationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('reservationIndex', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('reservationList', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('reservation/edit.html.twig', [
@@ -73,6 +73,7 @@ class ReservationController extends AbstractController
     #[Route('/{id}/delete', name: 'reservationDelete', methods: ['POST', 'GET'])]
     public function delete(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
+        // dd($reservation);
         if ($this->isCsrfTokenValid('delete'.$reservation->getId(), $request->request->get('_token'))) {
             $entityManager->remove($reservation);
             $entityManager->flush();
