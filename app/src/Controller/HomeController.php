@@ -18,13 +18,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
 
-    public function __construct(private readonly EntityManagerInterface $em){}
+    public function __construct(private readonly EntityManagerInterface $em)
+    {
+    }
 
 
     #[Route('/', name: 'accueil', methods: ['GET'])]
     public function index(AdsRepository $adsRepository): Response
     {
-
         $ads = $this->em->getRepository(Ads::class)->findAllWithImages();
         // dd($ads);
         return $this->render('home/home.html.twig', [

@@ -16,4 +16,5 @@ return array(
     'f598d06aa772fa33d905e87be6398fb1' => $vendorDir . '/symfony/polyfill-intl-idn/bootstrap.php',
     '2203a247e6fda86070a5e4e07aed533a' => $vendorDir . '/symfony/clock/Resources/now.php',
     '6a47392539ca2329373e0d33e1dba053' => $vendorDir . '/symfony/polyfill-intl-icu/bootstrap.php',
+    'a1105708a18b76903365ca1c4aa61b02' => $vendorDir . '/symfony/translation/Resources/functions.php',
 );

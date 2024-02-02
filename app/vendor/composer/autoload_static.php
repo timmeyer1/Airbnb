@@ -17,6 +17,7 @@ class ComposerStaticInit2e074b178cf99c894ccdda33ec3f7bde
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
+        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -46,6 +47,7 @@ class ComposerStaticInit2e074b178cf99c894ccdda33ec3f7bde
             'Symfony\\Component\\VarExporter\\' => 30,
             'Symfony\\Component\\VarDumper\\' => 28,
             'Symfony\\Component\\Validator\\' => 28,
+            'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Stopwatch\\' => 28,
             'Symfony\\Component\\Security\\Http\\' => 32,
@@ -93,6 +95,11 @@ class ComposerStaticInit2e074b178cf99c894ccdda33ec3f7bde
         'M' => 
         array (
             'Metadata\\' => 9,
+        ),
+        'K' => 
+        array (
+            'Knp\\Component\\' => 14,
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
         ),
         'F' => 
         array (
@@ -196,6 +203,10 @@ class ComposerStaticInit2e074b178cf99c894ccdda33ec3f7bde
         'Symfony\\Component\\Validator\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/validator',
+        ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
         ),
         'Symfony\\Component\\String\\' => 
         array (
@@ -360,6 +371,14 @@ class ComposerStaticInit2e074b178cf99c894ccdda33ec3f7bde
         'Metadata\\' => 
         array (
             0 => __DIR__ . '/..' . '/jms/metadata/src',
+        ),
+        'Knp\\Component\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-components/src/Knp/Component',
+        ),
+        'Knp\\Bundle\\PaginatorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle/src',
         ),
         'Faker\\' => 
         array (

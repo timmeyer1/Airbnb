@@ -4,7 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Ads;
 use App\Entity\User;
+use App\Model\SearchData;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
@@ -23,14 +26,14 @@ class AdsRepository extends ServiceEntityRepository
     }
 
     public function findEquipmentsByAdId(int $adId)
-{
-    return $this->createQueryBuilder('a')
-        ->leftJoin('a.equipment', 'e')
-        ->andWhere('a.id = :adId')
-        ->setParameter('adId', $adId)
-        ->getQuery()
-        ->getOneOrNullResult();
-}
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.equipment', 'e')
+            ->andWhere('a.id = :adId')
+            ->setParameter('adId', $adId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 
     public function findAllWithImages()
     {
@@ -96,7 +99,6 @@ class AdsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
 
     //    /**
     //     * @return Ads[] Returns an array of Ads objects

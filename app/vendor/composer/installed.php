@@ -190,6 +190,24 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'knplabs/knp-components' => array(
+            'pretty_version' => 'v4.3.0',
+            'version' => '4.3.0.0',
+            'reference' => 'ac704489426b090ea0e7ff4d1dd06e26baa49ee7',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../knplabs/knp-components',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'knplabs/knp-paginator-bundle' => array(
+            'pretty_version' => 'v6.3.0',
+            'version' => '6.3.0.0',
+            'reference' => 'f51fe26df07a08c1b3f272474401ef8a008b190c',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../knplabs/knp-paginator-bundle',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'nikic/php-parser' => array(
             'pretty_version' => 'v4.18.0',
             'version' => '4.18.0.0',
@@ -724,6 +742,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'symfony/translation' => array(
+            'pretty_version' => 'v7.0.3',
+            'version' => '7.0.3.0',
+            'reference' => '7285f25c7dcc74d9ec1232473114274604e50f00',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/translation',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'symfony/translation-contracts' => array(
             'pretty_version' => 'v3.4.1',
             'version' => '3.4.1.0',
@@ -732,6 +759,12 @@
             'install_path' => __DIR__ . '/../symfony/translation-contracts',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'symfony/translation-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '2.3|3.0',
+            ),
         ),
         'symfony/twig-bridge' => array(
             'pretty_version' => 'v7.0.2',
