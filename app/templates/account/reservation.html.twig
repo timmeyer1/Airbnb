@@ -1,7 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Hello{% endblock %}
+{% block title %}Mes réservations{% endblock %}
 
 {% block body %}
-<h1 class="text-center pb-4">Mes réservations</h1>
+<div class="container">
+    <h1 class="text-center">Mes reservations</h1>
+    {% include "reservation/index.html.twig" %}
+</div>
 {% endblock %}

@@ -1,0 +1,19 @@
+{% block content %}
+<div class="container mt-4">
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.start_date, 'Date de début') }}
+        {{ form_widget(form.start_date, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.end_date, 'Date de fin') }}
+        {{ form_widget(form.end_date, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        <label for="numGuests">Nombre d'invités :</label>
+        <input type="number" id="numGuests" name="numGuests" value="1" min="1">
+    </div>
+    <button type="submit" class="btn btn-success">Réserver maintenant</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

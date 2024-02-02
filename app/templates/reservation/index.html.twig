@@ -1,0 +1,32 @@
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date de départ</th>
+                <th>Date de retour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.startDate ? reservation.startDate|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.endDate ? reservation.endDate|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('reservationEdit', {'id': reservation.id}) }}">Éditer</a>
+                    <a class="btn btn-danger" href="{{ path('reservationDelete', {'id': reservation.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reservationNew') }}">Create new</a>
+{% endblock %}

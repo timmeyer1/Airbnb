@@ -43,7 +43,7 @@
             {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{ item.city }}, {{ item.country }}</h5>
-                <p class="card-text">{{ item.description }}</p>
+                <p class="card-text">{{ item.typeId.label }}</p>
                 <p><b>{{ item.price }}€</b> par nuit</p>
             </div>
         </a>

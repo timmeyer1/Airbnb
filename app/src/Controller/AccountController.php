@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use Doctrine\ORM\EntityManager;
 use App\Repository\AdsRepository;
+use App\Repository\ReservationRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -66,15 +67,16 @@ class AccountController extends AbstractController
         return $this->redirectToRoute('accueil');
     }
 
-    #[Route('/ads/reservation', name: 'reservationList', methods: ['GET'])]
-    public function index(): Response
+    #[Route('/profile/reservation', name: 'reservationList', methods: ['GET'])]
+    public function index(ReservationRepository $reservationRepository): Response
     {
         return $this->render('account/reservation.html.twig', [
             'controller_name' => 'ReservationController',
+            'reservations' => $reservationRepository->findAll(),
         ]);
     }
 
-    #[Route('/favorites', name: 'myFavorites', methods: ['GET'])]
+    #[Route('/profile/favorites', name: 'myFavorites', methods: ['GET'])]
     public function myFavorites(AdsRepository $adsRepository)
     {
         $user = $this->getUser(); // Récupérer l'utilisateur actuel

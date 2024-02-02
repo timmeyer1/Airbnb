@@ -35,6 +35,7 @@
     <div class="d-flex justify-content-between">
         <div>
             <h3>{{ ads.typeId.label }} - {{ ads.city }}, {{ ads.country }}</h3>
+            <h5>Adresse: <span class="text_desc">{{ads.address}}</span></h5>
             <h5>À savoir: <span class="text_desc">{{ ads.description }}</span></h5>
             <h5>Nombre de couchages: <span class="text_desc">{{ ads.sleeping }}</span></h5>
             <h5>Équipements:</h5>
@@ -49,27 +50,26 @@
         </div>
         <div class="reservation">
             <h3 class="text-center">Reservation</h3>
-            <form class="bg-light p-5 border rounded d-flex flex-column" method="post">
+            <form action="{{path('reservationNew', {'id': ads.id})}}"
+                class="bg-light p-5 border rounded d-flex flex-column" method="post">
                 <h4>{{ ads.price }}€ <span class="text_desc">par nuit</span></h4>
 
+                {# input pour les réservations #}
                 {# <label for="start">Date de départ:</label>
-                <input type="date" id="start" name="dateStart" value="2024-01-01" min="2024-01-01" max="2026-01-01" />
+                <input type="date" id="start" name="dateMove" value="2024-01-01" min="2024-01-01" max="2026-01-01" />
 
-                <label for="end">Date de retour:</label>
-                <input type="date" id="start" name="dateEnd" value="2024-01-01" min="2024-01-01" max="2026-01-01" /> #}
+                <label for="start">Date de d'arrivée:</label>
+                <input type="date" id="start" name="dateMove" value="2024-01-01" min="2024-01-01" max="2026-01-01" /> #}
 
-                
-
-                <label for="numGuests">Nombre d'invités :</label>
-                <input type="number" id="numGuests" name="numGuests" value="1" min="1">
+                {% include "reservation/_form.html.twig" %}
 
                 <br>
                 <div class="text-center mt-3">
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {# {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <button type="submit" class="btn btn-success">Réserver maintenant</button>
                     {% else %}
                     <a href="{{ path('login') }}" class="btn btn-success">Réserver maintenant</a>
-                    {% endif %}
+                    {% endif %} #}
                 </div>
             </form>
         </div>
