@@ -25,6 +25,7 @@ class AdsRepository extends ServiceEntityRepository
         parent::__construct($registry, Ads::class);
     }
 
+    // fonction pour sélectionner les équipements avec l'id de leur annonce
     public function findEquipmentsByAdId(int $adId)
     {
         return $this->createQueryBuilder('a')
@@ -35,6 +36,7 @@ class AdsRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    // fonction pour sélectionner toutes les annonces avec leurs images
     public function findAllWithImages()
     {
         return $this->createQueryBuilder('a')
@@ -48,6 +50,7 @@ class AdsRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    // fonction pour sélectionner une seule annonce avec ses infos
     public function findByIdWithInfos($id)
     {
         return $this->createQueryBuilder('a')

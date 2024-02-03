@@ -24,15 +24,18 @@ class AdsController extends AbstractController
     //     ]);
     // }
 
+    // vue pour ajouter une annonce
     #[Route('/add-ad/{id}', name: 'addAd', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, int $id, UserRepository $userRepository)
     {
+
         $ad = new Ads();
         // récupérer l'id de l'utilisateur
         $ad->setUserId($userRepository->find($id));
         $form = $this->createForm(AdsType::class, $ad);
         $form->handleRequest($request);
 
+        // on vérifie si le formulaire est correct
         if ($form->isSubmitted() && $form->isValid()) {
             //gestion de l'image uploadée
             $imageFile = $form->get('imageFile')->getData();
@@ -74,6 +77,7 @@ class AdsController extends AbstractController
     //     ]);
     // }
 
+    // vue pour éditer une annonce
     #[Route('/{id}/edit', name: 'editAd', methods: ['GET', 'POST'])]
     public function edit(Request $request, Ads $ad, EntityManagerInterface $entityManager): Response
     {
@@ -97,6 +101,7 @@ class AdsController extends AbstractController
         ]);
     }
 
+    // vue pour supprimer une annonce
     #[Route('/{id}', name: 'deleteAd', methods: ['POST', 'GET'])]
     public function delete(Request $request, Ads $ad, EntityManagerInterface $entityManager): Response
     {

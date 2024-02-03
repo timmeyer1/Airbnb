@@ -23,13 +23,15 @@ class AccountController extends AbstractController
         $this->security = $security;
     }
 
+
+    // profile view
     #[Route('/profile', name: 'profile', methods: ['GET'])]
     public function profile()
     {
         return $this->render('account/profile.html.twig');
     }
 
-
+    // my ads view
     #[Route('/myads', name: 'myAds', methods: ['GET'])]
     public function myAds(AdsRepository $adsRepository): Response
     {
@@ -45,14 +47,15 @@ class AccountController extends AbstractController
     }
 
 
-
+    // fonction pour changer le role d'un utilisateur
     #[Route('/change-role/{id}', name: 'changeRole', methods: ['GET'])]
     public function changeRole(int $id, UserRepository $userRepository, EntityManagerInterface $entityManager)
     {
 
+        // récupérer l'id de l'utilisateur
         $user = $userRepository->find($id);
 
-        
+        // Récupérer l'utilisateur actuel
         if (!$user) {
             throw $this->createNotFoundException('Utilisateur non trouvé');
         }
@@ -67,6 +70,7 @@ class AccountController extends AbstractController
         return $this->redirectToRoute('accueil');
     }
 
+    // page des réservations
     #[Route('/profile/reservation', name: 'reservationList', methods: ['GET'])]
     public function index(ReservationRepository $reservationRepository): Response
     {
@@ -76,6 +80,7 @@ class AccountController extends AbstractController
         ]);
     }
 
+    // page des favoris
     #[Route('/profile/favorites', name: 'myFavorites', methods: ['GET'])]
     public function myFavorites(AdsRepository $adsRepository)
     {

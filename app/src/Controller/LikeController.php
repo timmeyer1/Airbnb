@@ -11,11 +11,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LikeController extends AbstractController
 {
+
+    // vue pour mettre en favoris une annonce
     #[Route('/like/ad/{id}', name: 'likeAd', methods: ['GET'])]
     public function likeRedirectHere(Ads $ad, EntityManagerInterface $manager, Request $request): Response
     {
+        // on récupère l'user actuel
         $user = $this->getUser();
 
+        // conditions
         if($ad->isLikedByUser($user)) {
             $ad->removeLike($user);
             $manager->flush();

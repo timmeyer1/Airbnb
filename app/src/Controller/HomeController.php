@@ -23,9 +23,11 @@ class HomeController extends AbstractController
     }
 
 
+    // page d'accueil
     #[Route('/', name: 'accueil', methods: ['GET'])]
     public function index(AdsRepository $adsRepository): Response
     {
+        // on récupère toutes les annonces avec leurs images
         $ads = $this->em->getRepository(Ads::class)->findAllWithImages();
         // dd($ads);
         return $this->render('home/home.html.twig', [
@@ -33,9 +35,11 @@ class HomeController extends AbstractController
         ]);
     }
 
+    // page des détails d'une annonce
     #[Route('/detail/{id}', name: 'detail', methods: ['GET'])]
     public function detail(int $id, Ads $ads)
     {
+        // on récupère toutes les annonces avec leurs images
         $ads = $this->em->getRepository(Ads::class)->findByIdWithInfos($id);
         $user = $this->em->getRepository(User::class)->find($ads->getUserId());
         $reservation = new Reservation();
