@@ -9,6 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ReservationType extends AbstractType
 {
+
+    // fonction pour update / ajouter la date de départ et de fin
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

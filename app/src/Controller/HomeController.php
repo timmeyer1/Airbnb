@@ -41,8 +41,10 @@ class HomeController extends AbstractController
     {
         // on récupère toutes les annonces avec leurs images
         $ads = $this->em->getRepository(Ads::class)->findByIdWithInfos($id);
+        // on récupère l'id de l'utilisateur
         $user = $this->em->getRepository(User::class)->find($ads->getUserId());
         $reservation = new Reservation();
+        // on donne a $reservation, l'id de l'utilisateur connecté
         $reservation->getUserId()->add($this->getUser());
         // dd($ads);
         return $this->render('home/detail.html.twig', [

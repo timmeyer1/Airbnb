@@ -32,11 +32,12 @@ class AccountController extends AbstractController
     }
 
     // my ads view
-    #[Route('/myads', name: 'myAds', methods: ['GET'])]
+    #[Route('/profile/myads', name: 'myAds', methods: ['GET'])]
     public function myAds(AdsRepository $adsRepository): Response
     {
         $user = $this->getUser(); // Récupérer l'utilisateur actuel
     
+        // si l'utilisateur n'est pas connecté on renvoie à l'accueil
         if (!$user) {
             return $this->redirectToRoute('accueil');
         }
@@ -55,7 +56,7 @@ class AccountController extends AbstractController
         // récupérer l'id de l'utilisateur
         $user = $userRepository->find($id);
 
-        // Récupérer l'utilisateur actuel
+        // Vérifier si l'utilisateur est connecté sinon on renvoie "Utilisateur non trouvé
         if (!$user) {
             throw $this->createNotFoundException('Utilisateur non trouvé');
         }
@@ -86,6 +87,7 @@ class AccountController extends AbstractController
     {
         $user = $this->getUser(); // Récupérer l'utilisateur actuel
     
+        // si l'utilisateur n'est pas connecté on renvoie à l'accueil
         if (!$user) {
             return $this->redirectToRoute('accueil');
         }

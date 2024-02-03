@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/reservation')]
 class ReservationController extends AbstractController
 {
+    // route pour afficher les réservations créées
     #[Route('/index', name: 'reservationIndex', methods: ['GET'])]
     
     public function index(ReservationRepository $reservationRepository): Response
@@ -23,6 +24,8 @@ class ReservationController extends AbstractController
         ]);
     }
 
+
+    // fonction pour ajouter une nouvelle réservation
     #[Route('/new', name: 'reservationNew', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -44,14 +47,16 @@ class ReservationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'reservationShow', methods: ['GET'])]
-    public function show(Reservation $reservation): Response
-    {
-        return $this->render('reservation/show.html.twig', [
-            'reservation' => $reservation,
-        ]);
-    }
+    // fonction pour montrer une reservation (remplacée par "reservationList" dans homeController)
+    // #[Route('/{id}', name: 'reservationShow', methods: ['GET'])]
+    // public function show(Reservation $reservation): Response
+    // {
+    //     return $this->render('reservation/show.html.twig', [
+    //         'reservation' => $reservation,
+    //     ]);
+    // }
 
+    // fonction pour éditer une reservation
     #[Route('/{id}/edit', name: 'reservationEdit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
@@ -70,6 +75,7 @@ class ReservationController extends AbstractController
         ]);
     }
 
+    // fonction pour supprimer une réservation
     #[Route('/{id}/delete', name: 'reservationDelete', methods: ['POST', 'GET'])]
     public function delete(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {

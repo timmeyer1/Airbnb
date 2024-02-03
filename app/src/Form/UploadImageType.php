@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class UploadImageType extends AbstractType
 {
+
+    // méthode pour modifier les données de la table Image (inutile pour l'instant car les images sont gérées sur la table Ads)
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

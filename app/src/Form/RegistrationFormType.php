@@ -65,6 +65,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class RegistrationFormType extends AbstractType
 {
+    // fonction qui va ajouter au formulaire les champs indiqués
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

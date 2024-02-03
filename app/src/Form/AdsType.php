@@ -22,6 +22,8 @@ use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
 
 class AdsType extends AbstractType
 {
+
+    // fonction pour ajouter au formulaire les champs indiqués
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
